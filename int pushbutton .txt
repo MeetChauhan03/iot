@@ -1,0 +1,17 @@
+int pushbutton = 0;
+void setup()
+{
+  pinMode(2, INPUT);
+  pinMode(13, OUTPUT);
+}
+void loop()
+{
+  pushbutton = digitalRead(2); //read push button
+  
+  if(pushbutton == HIGH)
+  {
+    digitalWrite(13, HIGH);
+  } else {
+    digitalWrite(13, LOW);
+  }
+}

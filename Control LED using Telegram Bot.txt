@@ -1,0 +1,33 @@
+import sys 
+import telepot
+import RPi.GPIO as GPIO 
+from telepot.loop import MessageLoop 
+ 
+GPIO.setmode(GPIO.BOARD) 
+GPIO.setwarnings(False) 
+GPIO.setup(8, GPIO.OUT) 
+GPIO.setup(10, GPIO.OUT) 
+GPIO.setup(12, GPIO.OUT) 
+GPIO.setup(14, GPIO.OUT) 
+  
+def action(msg): 
+    chat_id = msg['chat']['id'] 
+    command = msg['text']     
+    if “on” in command:         
+message = "on LED  "         
+GPIO.output(8, True) 
+        GPIO.output(10, True) 
+        GPIO.output(12, True)        
+ GPIO.output(16, True)     
+if  'off' in command:        
+ GPIO.output(8, False) 
+        GPIO.output(10, False) 
+        GPIO.output(12, False)       
+ GPIO.output(16, False) 
+telegram_bot= telepot.Bot(5829998811:AAGgA60VaeW3UrNE_Digue0E2PLO-D34hQ0) 
+print(telegram_bot.getMe()) 
+MessageLoop(telegram_bot, action).run_as_thread()
+print('Up and Running....') 
+ 
+while 1: 
+    time.sleep(10) 
